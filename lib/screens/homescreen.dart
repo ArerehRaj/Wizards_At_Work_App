@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:smart_queue_management_system_app/screens/bus_screen.dart';
 import 'package:smart_queue_management_system_app/screens/doctor_screen.dart';
 import 'package:smart_queue_management_system_app/screens/shop_screen.dart';
@@ -12,6 +13,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void dispose() {
+    super.dispose();
+
+    SystemChrome.setEnabledSystemUIMode(
+      SystemUiMode.leanBack,
+    ); // to re-show bars
+  }
+
   @override
   Widget build(BuildContext context) {
     return const TabBarWidget(
