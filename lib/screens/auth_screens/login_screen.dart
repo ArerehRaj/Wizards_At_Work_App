@@ -2,10 +2,10 @@ import 'package:smart_queue_management_system_app/components/rounded_buttons.dar
 import 'package:flutter/material.dart';
 import 'package:smart_queue_management_system_app/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:smart_queue_management_system_app/screens/dashboard_screen.dart';
+import 'package:smart_queue_management_system_app/screens/auth_screens/dashboard_screen.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-import 'homescreen.dart';
+import '../ui_screens/homescreen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
