@@ -43,6 +43,14 @@ class _QueueDetailsGridState extends State<QueueDetailsGrid> {
             .where('queue_id', isEqualTo: widget.queueID)
             .get();
 
+        print(data.docs.first.get('token_number'));
+
+        final queueChange = await FirebaseFirestore.instance.collection('queue').doc(widget.queueID).get();
+        final ogQueue = queueChange.get('arr_tokens') as List;
+        ogQueue.remove(data.docs.first.get('token_number').toString());
+
+        await FirebaseFirestore.instance.collection('queue').doc(widget.queueID).update({'arr_tokens':ogQueue});
+
         await data.docs.first.reference.delete();
 
         setState(() {
@@ -268,7 +276,6 @@ class _QueueDetailsGridState extends State<QueueDetailsGrid> {
             height: 55,
             child: ElevatedButton(
               onPressed: _isBooked ? (){
-                print('Exit code');
                 exitFromQueue();
               } : () {
                 final tokensArray = widget.queueData.get('arr_tokens') as List;
