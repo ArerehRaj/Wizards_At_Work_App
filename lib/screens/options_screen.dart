@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../widgets/organization_card.dart';
 
@@ -7,6 +8,7 @@ class OptionsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -17,13 +19,24 @@ class OptionsScreen extends StatelessWidget {
       width: deviceSize.width,
       margin: const EdgeInsets.all(10),
       child: 
-        ListView.builder(
-          itemBuilder: (ctx, index){
-            return const OrganizationCard();
-          },
-          itemCount: 5,
+        StreamBuilder(
+          stream: FirebaseFirestore.instance.collection('organizations').snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
+          if(!snapshot.hasData){
+            return const Center(
+            child: CircularProgressIndicator(),
+            );
+          }
+          var organizationsList = snapshot.data!.docs;
+          
+          return ListView.builder(
+            itemBuilder: (ctx, index){
+              return OrganizationCard(orgDetails: organizationsList[index].data(),);
+            },
+            itemCount: organizationsList.length,
+          );
+        },
         ),
-      
     ),);
   }
 }

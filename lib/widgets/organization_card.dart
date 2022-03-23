@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class OrganizationCard extends StatelessWidget {
-  const OrganizationCard({ Key? key }) : super(key: key);
+  OrganizationCard({required this.orgDetails});
+
+  final orgDetails;
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +21,18 @@ class OrganizationCard extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-        title: const Text('Org Name'), 
-        trailing: const Text('City'),
-        subtitle: const Text('Sub Title'),
+        title: Text(orgDetails['org_name']), 
+        trailing: FittedBox(
+          // height: 20,
+          // width: 20,
+          child: Row(
+            children: [
+              const Icon(Icons.location_on, size: 20, color: Colors.black,),
+              Text(orgDetails['org_city']),
+            ],
+          ),
+        ),
+        subtitle: Text(orgDetails['org_type']),
         ),
     );
   }
