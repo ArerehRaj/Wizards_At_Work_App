@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:smart_queue_management_system_app/screens/login_screen.dart';
 import 'package:smart_queue_management_system_app/screens/registration_screen.dart';
 import 'package:smart_queue_management_system_app/screens/welcome_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:smart_queue_management_system_app/screens/dashboard_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -21,6 +25,7 @@ class MyApp extends StatelessWidget {
         WelcomeScreen.id: (context) => const WelcomeScreen(),
         LoginScreen.id: (context) => const LoginScreen(),
         RegistrationScreen.id: (context) => const RegistrationScreen(),
+        DashboardScreen.id: (context) => const DashboardScreen(),
       },
       // initialRoute: '/',
       // routes: {
