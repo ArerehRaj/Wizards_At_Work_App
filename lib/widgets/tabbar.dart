@@ -15,8 +15,12 @@ class TabBarWidget extends StatelessWidget {
         length: tabs.length,
         child: Scaffold(
           appBar: AppBar(
+            title: Text(
+              "Qeasy",
+              style: TextStyle(fontSize: 25),
+            ),
             backgroundColor: Color(0xff1D2033),
-            toolbarHeight: 0,
+            toolbarHeight: 60,
             bottom: TabBar(
               indicatorColor: Colors.white,
               indicatorWeight: 5,
