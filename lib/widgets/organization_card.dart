@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import '../screens/queues_screen.dart';
 
 class OrganizationCard extends StatelessWidget {
-  OrganizationCard({required this.orgDetails});
+  OrganizationCard({required this.orgDetails, required this.categoryType});
 
   final orgDetails;
+  final categoryType;
 
   @override
   Widget build(BuildContext context) {

@@ -28,7 +28,7 @@ class _QueueDetailsState extends State<QueueDetails> {
           ),
           Expanded(
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(20.0),
@@ -44,6 +44,7 @@ class _QueueDetailsState extends State<QueueDetails> {
                 noOfTokensAvailable: (argsData['queueData'].get('max_tokens') - argsData['queueData'].get('token_distributed')).toString(),
                 queueData: argsData['queueData'],
                 queueID: argsData['queueID'],
+                categoryType: argsData['token_type'],
               ),
             ),
           ),

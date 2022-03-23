@@ -103,7 +103,7 @@ class QueueCard extends StatelessWidget {
             //     'token_type': 'doctor',
             // });
 
-            Navigator.pushNamed(context, QueueDetails.routeName, arguments: {'queueData': userDocument, 'queueID': queueID, 'token_type': 'doctor', 'org_name': orgName, 'org_type': orgType});
+            Navigator.pushNamed(context, QueueDetails.routeName, arguments: {'queueData': userDocument, 'queueID': queueID, 'token_type': orgType, 'org_name': orgName, 'org_type': orgType});
 
           } : (){print('HRHR');},
           child: Card(

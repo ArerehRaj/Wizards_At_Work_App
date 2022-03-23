@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_queue_management_system_app/components/category_enum.dart';
 import '../widgets/organization_card.dart';
 
 class OptionsScreen extends StatelessWidget {
-  const OptionsScreen({ Key? key }) : super(key: key);
+  const OptionsScreen({ Key? key , required this.categoryType,}) : super(key: key);
+  final String categoryType;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class OptionsScreen extends StatelessWidget {
       margin: const EdgeInsets.all(10),
       child: 
         StreamBuilder(
-          stream: FirebaseFirestore.instance.collection('organizations').where('org_type', isEqualTo: 'Health').snapshots(),
+          stream: FirebaseFirestore.instance.collection('organizations').where('org_type', isEqualTo: categoryType).snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
           if(!snapshot.hasData){
             return const Center(
@@ -31,7 +33,7 @@ class OptionsScreen extends StatelessWidget {
           
           return organizationsList.isEmpty? const Center(child: Text('No organization available'),) : ListView.builder(
             itemBuilder: (ctx, index){
-              return OrganizationCard(orgDetails: organizationsList[index].data(),);
+              return OrganizationCard(orgDetails: organizationsList[index].data(), categoryType: categoryType,);
             },
             itemCount: organizationsList.length,
           );

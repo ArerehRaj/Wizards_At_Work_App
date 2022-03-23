@@ -6,6 +6,7 @@ import 'package:smart_queue_management_system_app/screens/queue_details_screen.d
 import 'package:smart_queue_management_system_app/screens/queues_screen.dart';
 
 import './screens/options_screen.dart';
+import './components/category_enum.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -81,7 +82,7 @@ class MyApp extends StatelessWidget {
         //   }
         // _populateOrg();
         //_populateQueue();
-        return const OptionsScreen();
+        return OptionsScreen(categoryType: Category.doctor,);
       },
       ),
     routes: {

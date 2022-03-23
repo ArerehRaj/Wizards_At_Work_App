@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import '../components/category_enum.dart';
 
 class QueueDetailsGrid extends StatefulWidget {
   const QueueDetailsGrid({
@@ -12,6 +13,7 @@ class QueueDetailsGrid extends StatefulWidget {
     required this.noOfTokensAvailable,
     required this.queueData,
     required this.queueID,
+    required this.categoryType,
   }) : super(key: key);
   final String nameOfHospital;
   final String nameOfDoctor;
@@ -21,6 +23,7 @@ class QueueDetailsGrid extends StatefulWidget {
   final String noOfTokensAvailable;
   final queueData;
   final queueID;
+  final categoryType;
 
   @override
   State<QueueDetailsGrid> createState() => _QueueDetailsGridState();
@@ -38,12 +41,10 @@ class _QueueDetailsGridState extends State<QueueDetailsGrid> {
     });
     final data = await FirebaseFirestore.instance
             .collection('token')
-            .where('token_type', isEqualTo: 'doctor')
+            .where('token_type', isEqualTo: widget.categoryType)
             .where('user_id', isEqualTo: '5dhwZmKIAbUDvQg1O81Zb4rb0Xq1')
             .where('queue_id', isEqualTo: widget.queueID)
             .get();
-
-        print(data.docs.first.get('token_number'));
 
         final queueChange = await FirebaseFirestore.instance.collection('queue').doc(widget.queueID).get();
         final ogQueue = queueChange.get('arr_tokens') as List;
@@ -62,7 +63,7 @@ class _QueueDetailsGridState extends State<QueueDetailsGrid> {
   void checkIfQueueBooked() async {
     final data = await FirebaseFirestore.instance
             .collection('token')
-            .where('token_type', isEqualTo: 'doctor')
+            .where('token_type', isEqualTo: widget.categoryType)
             .where('user_id', isEqualTo: '5dhwZmKIAbUDvQg1O81Zb4rb0Xq1')
             .where('queue_id', isEqualTo: widget.queueID)
             .get();
@@ -78,7 +79,7 @@ class _QueueDetailsGridState extends State<QueueDetailsGrid> {
                 // print('Join OPtioj');
                 final newData = await FirebaseFirestore.instance
             .collection('token')
-            .where('token_type', isEqualTo: 'doctor')
+            .where('token_type', isEqualTo: widget.categoryType)
             .where('user_id', isEqualTo: '5dhwZmKIAbUDvQg1O81Zb4rb0Xq1').get();
             
               if(newData.size == 1){
@@ -294,7 +295,7 @@ class _QueueDetailsGridState extends State<QueueDetailsGrid> {
                     'time_stamp': DateTime.now(),
                     'user_id': '5dhwZmKIAbUDvQg1O81Zb4rb0Xq1', // FirebaseAuth.instance.currentUser!.uid, 
                     'queue_id': widget.queueID,
-                    'token_type': 'doctor',
+                    'token_type': widget.categoryType,
                 });
 
                 // set state to booked
