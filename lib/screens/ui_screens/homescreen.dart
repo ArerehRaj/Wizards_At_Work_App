@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:smart_queue_management_system_app/screens/bus_screen.dart';
-import 'package:smart_queue_management_system_app/screens/doctor_screen.dart';
-import 'package:smart_queue_management_system_app/screens/shop_screen.dart';
+import 'package:smart_queue_management_system_app/screens/ui_screens/bus_screen.dart';
+import 'package:smart_queue_management_system_app/screens/ui_screens/doctor_screen.dart';
+import 'package:smart_queue_management_system_app/screens/ui_screens/shop_screen.dart';
 import 'package:smart_queue_management_system_app/widgets/tabbar.dart';
 
 class HomeScreen extends StatefulWidget {
