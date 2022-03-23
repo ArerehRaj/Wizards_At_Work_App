@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_queue_management_system_app/screens/queues_screen.dart';
 
 import './screens/options_screen.dart';
 
@@ -31,7 +32,11 @@ class MyApp extends StatelessWidget {
         //     // return const TabsScreen();
         //   }
         return const OptionsScreen();
-      },),
+      },
+      ),
+    routes: {
+      QueuesScreen.routeName: (ctx) => const QueuesScreen(),
+    },
     );
   }
 }
