@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:smart_queue_management_system_app/scheme.dart';
 import 'package:smart_queue_management_system_app/screens/homescreen.dart';
+import 'package:smart_queue_management_system_app/screens/login_screen.dart';
+import 'package:smart_queue_management_system_app/screens/registration_screen.dart';
+import 'package:smart_queue_management_system_app/screens/welcome_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:smart_queue_management_system_app/screens/dashboard_screen.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -13,62 +20,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: const HomeScreen(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text(widget.title),
-        backgroundColor: bgcolor,
-      ),
-      body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text(
-              'You have pushed the button this many times:',
-            ),
-          ],
-        ),
-      ),
-      // This trailing comma makes auto-formatting nicer for build methods.
+      debugShowCheckedModeBanner: false,
+      title: 'QEasy',
+      initialRoute: WelcomeScreen.id,
+      routes: {
+        WelcomeScreen.id: (context) => const WelcomeScreen(),
+        LoginScreen.id: (context) => const LoginScreen(),
+        RegistrationScreen.id: (context) => const RegistrationScreen(),
+        DashboardScreen.id: (context) => const DashboardScreen(),
+      },
+      // initialRoute: '/',
+      // routes: {
+      //   // When navigating to the "/" route, build the FirstScreen widget.
+      //   '/': (context) => const WelcomeScreen(),
+      //   // When navigating to the "/second" route, build the SecondScreen widget.
+      //   '/SecondPage': (context) => const LoginScreen(),
+      // },
+      // home: WelcomeScreen(),
     );
   }
 }
