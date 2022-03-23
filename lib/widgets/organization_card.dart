@@ -5,15 +5,24 @@ class OrganizationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: SizedBox(child: Image.asset(
-              'assets/images/brand-image.png',
-              fit: BoxFit.cover,
+    return Card(
+      margin: const EdgeInsets.symmetric(vertical: 6,),
+      // shape: Border(left: BorderSide(color: Colors.blue.shade300, width: 5),),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      elevation: 5.0,
+      shadowColor: Colors.grey,
+      child: ListTile(
+        leading: SizedBox(child: Image.asset(
+                'assets/images/brand-image.png',
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-      title: const Text('Org Name'), 
-      trailing: const Text('City'),
-      subtitle: const Text('Sub Title'),
-      );
+        title: const Text('Org Name'), 
+        trailing: const Text('City'),
+        subtitle: const Text('Sub Title'),
+        ),
+    );
   }
 }
