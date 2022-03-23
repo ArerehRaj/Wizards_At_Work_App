@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_queue_management_system_app/scheme.dart';
 import 'package:smart_queue_management_system_app/screens/homescreen.dart';
 import 'package:smart_queue_management_system_app/screens/login_screen.dart';
+import 'package:smart_queue_management_system_app/screens/notification_screen.dart';
 import 'package:smart_queue_management_system_app/screens/registration_screen.dart';
 import 'package:smart_queue_management_system_app/screens/welcome_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -22,12 +23,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'QEasy',
-      initialRoute: WelcomeScreen.id,
+      initialRoute: HomeScreen.id,
       routes: {
         WelcomeScreen.id: (context) => const WelcomeScreen(),
         LoginScreen.id: (context) => const LoginScreen(),
         RegistrationScreen.id: (context) => const RegistrationScreen(),
         DashboardScreen.id: (context) => const DashboardScreen(),
+        NotificationScreen.id: (context) => const NotificationScreen(),
+        HomeScreen.id: (context) => const HomeScreen(),
       },
       // initialRoute: '/',
       // routes: {
