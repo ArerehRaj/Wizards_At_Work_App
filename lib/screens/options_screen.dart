@@ -29,7 +29,7 @@ class OptionsScreen extends StatelessWidget {
           }
           var organizationsList = snapshot.data!.docs;
           
-          return ListView.builder(
+          return organizationsList.isEmpty? const Center(child: Text('No organization available'),) : ListView.builder(
             itemBuilder: (ctx, index){
               return OrganizationCard(orgDetails: organizationsList[index].data(),);
             },
