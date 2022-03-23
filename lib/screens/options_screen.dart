@@ -20,7 +20,7 @@ class OptionsScreen extends StatelessWidget {
       margin: const EdgeInsets.all(10),
       child: 
         StreamBuilder(
-          stream: FirebaseFirestore.instance.collection('organizations').snapshots(),
+          stream: FirebaseFirestore.instance.collection('organizations').where('org_type', isEqualTo: 'Health').snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
           if(!snapshot.hasData){
             return const Center(

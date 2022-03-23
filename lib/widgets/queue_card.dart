@@ -1,12 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_queue_management_system_app/screens/queue_details_screen.dart';
 
 class QueueCard extends StatelessWidget {
-  QueueCard({ required this.queueID, required this.counter, });
+  QueueCard({ required this.queueID, required this.counter, required this.orgName, required this.orgType,});
 
   final queueID;
   final counter;
+  final orgName;
+  final orgType;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +21,7 @@ class QueueCard extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         }
         var userDocument = snapshot.data as DocumentSnapshot;
-        print(userDocument.get('max_tokens'));
+        // print(userDocument.get('max_tokens'));
 
         // Adding in queue
 
@@ -60,8 +63,49 @@ class QueueCard extends StatelessWidget {
         
         return GestureDetector(
           onTap: userDocument.get('status') ? (){
-            print('Tapped');
-          } : null,
+            // one person one queue in one category
+            // final data = FirebaseFirestore.instance
+            // .collection('token')
+            // .where('token_type', isEqualTo: 'doctor')
+            // .where('user_id', isEqualTo: '5dhwZmKIAbUDvQg1O81Zb4rb0Xq1')
+            // .where('queue_id', isEqualTo: queueID)
+            // .get();
+
+            // data.then((value) {
+            //   print(value.size);
+            //   // print(value.docs.first.get('user_id'));
+            //   if(value.size == 1){
+            //     print('Exit OPtion');
+            //   }
+            //   else {
+            //     print('Join OPtioj');
+            //   }
+            // });
+
+            // add in queue
+
+            // final tokensArray = userDocument.get('arr_tokens') as List;
+            // final lastToken = tokensArray.last;
+            // final newToken = int.parse(lastToken) + 1;
+            // tokensArray.add(newToken.toString());
+            // FirebaseFirestore.instance.collection('queue').doc(queueID).update(
+            //   {
+            //     'arr_tokens':tokensArray,
+            //     'token_distributed': userDocument.get('token_distributed') + 1,
+            //   }
+            // );
+
+            // FirebaseFirestore.instance.collection('token').add({
+            //     'token_number':newToken,
+            //     'time_stamp': DateTime.now(),
+            //     'user_id': '5dhwZmKIAbUDvQg1O81Zb4rb0Xq1', // FirebaseAuth.instance.currentUser!.uid, 
+            //     'queue_id': queueID,
+            //     'token_type': 'doctor',
+            // });
+
+            Navigator.pushNamed(context, QueueDetails.routeName, arguments: {'queueData': userDocument, 'queueID': queueID, 'token_type': 'doctor', 'org_name': orgName, 'org_type': orgType});
+
+          } : (){print('HRHR');},
           child: Card(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15.0),

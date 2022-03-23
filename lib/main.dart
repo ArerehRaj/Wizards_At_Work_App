@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_queue_management_system_app/screens/queue_details_screen.dart';
 import 'package:smart_queue_management_system_app/screens/queues_screen.dart';
 
 import './screens/options_screen.dart';
@@ -85,6 +86,7 @@ class MyApp extends StatelessWidget {
       ),
     routes: {
       QueuesScreen.routeName: (ctx) => const QueuesScreen(),
+      QueueDetails.routeName: (ctx) => const QueueDetails(),
     },
     );
   }

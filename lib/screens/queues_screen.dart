@@ -18,7 +18,7 @@ class QueuesScreen extends StatelessWidget {
         margin: const EdgeInsets.all(10),
         child: args['list_of_queues'].isEmpty ? const Center(child: Text('No Queues Available now'),) : ListView.builder(
           itemBuilder: (ctx, index){
-            return QueueCard(queueID: args['list_of_queues'][index], counter: index,);
+            return QueueCard(queueID: args['list_of_queues'][index], counter: index, orgName:  args['org_name'], orgType: args['org_type'],);
           },
           itemCount: args['list_of_queues'].length,
         )
