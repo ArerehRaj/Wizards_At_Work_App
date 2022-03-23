@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:smart_queue_management_system_app/components/rounded_buttons.dart';
-import 'package:smart_queue_management_system_app/screens/login_screen.dart';
+import 'package:smart_queue_management_system_app/screens/auth_screens/login_screen.dart';
 import 'package:flutter/animation.dart';
-import 'package:smart_queue_management_system_app/screens/registration_screen.dart';
+import 'package:smart_queue_management_system_app/screens/auth_screens/registration_screen.dart';
 
 const colorizeColors = [
   Colors.purple,
