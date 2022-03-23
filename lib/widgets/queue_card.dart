@@ -40,7 +40,7 @@ class QueueCard extends StatelessWidget {
                     ]),), flex: 3,),
                     Expanded(child: Container(
                       child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                        Text(userDocument.get('queue_details')['category']['doctor']['name'], style: TextStyle(fontSize: 25,),),
+                        Text(userDocument.get('queue_details')['name'], style: TextStyle(fontSize: 25,),),
                         const SizedBox(height: 15,),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,

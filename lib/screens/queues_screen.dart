@@ -19,6 +19,8 @@ class QueuesScreen extends StatelessWidget {
         margin: const EdgeInsets.all(10),
         child: ListView.builder(
           itemBuilder: (ctx, index){
+            print(args['list_of_queues'][index]);
+            print(index);
             return QueueCard(queueID: args['list_of_queues'][index], counter: index,);
           },
           itemCount: args['list_of_queues'].length,
