@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../components/category_enum.dart';
+import '../widgets/queue_exit_box.dart';
 
 class QueueDetailsGrid extends StatefulWidget {
   const QueueDetailsGrid({
@@ -277,7 +278,12 @@ class _QueueDetailsGridState extends State<QueueDetailsGrid> {
             height: 55,
             child: ElevatedButton(
               onPressed: _isBooked ? (){
-                exitFromQueue();
+                showDialog(
+                      context: context,
+                      builder: (context) {
+                        return QueueExitBox(exitFunction: exitFromQueue,);
+                      });
+                // exitFromQueue();
               } : () {
                 final tokensArray = widget.queueData.get('arr_tokens') as List;
                 final lastToken = tokensArray.last;
