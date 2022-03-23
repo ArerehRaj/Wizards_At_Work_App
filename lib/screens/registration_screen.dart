@@ -4,6 +4,7 @@ import 'package:smart_queue_management_system_app/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:smart_queue_management_system_app/screens/dashboard_screen.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:smart_queue_management_system_app/screens/homescreen.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
@@ -79,8 +80,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         final newUser =
                             await _auth.createUserWithEmailAndPassword(
                                 email: email, password: password);
-                        if (newUser != null)
-                          Navigator.pushNamed(context, DashboardScreen.id);
+                        if (newUser != null) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const HomeScreen(),
+                              ));
+                        }
                         setState(() {
                           showSpinner = false;
                         });
