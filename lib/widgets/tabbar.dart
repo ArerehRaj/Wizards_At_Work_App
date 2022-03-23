@@ -15,12 +15,22 @@ class TabBarWidget extends StatelessWidget {
         length: tabs.length,
         child: Scaffold(
           appBar: AppBar(
+            centerTitle: true,
             title: Text(
-              "Qeasy",
-              style: TextStyle(fontSize: 25),
+              "QEasy",
+              style: TextStyle(fontSize: 30),
+              textAlign: TextAlign.center,
             ),
             backgroundColor: Color(0xff1D2033),
             toolbarHeight: 60,
+            actions: [
+              IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.more_vert_rounded,
+                    color: Colors.white,
+                  ))
+            ],
             bottom: TabBar(
               indicatorColor: Colors.white,
               indicatorWeight: 5,

@@ -15,9 +15,9 @@ class _DoctorScreenState extends State<DoctorScreen> {
     return Scaffold(
       backgroundColor: bgcolor,
       body: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(20),
         child: Container(
-          height: MediaQuery.of(context).size.height * 0.5,
+          height: MediaQuery.of(context).size.height * 0.55,
           child: Column(
             children: [
               SizedBox(
