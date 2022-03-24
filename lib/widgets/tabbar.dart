@@ -19,11 +19,12 @@ class TabBarWidget extends StatelessWidget {
             centerTitle: true,
             title: Text(
               "QEasy",
-              style: TextStyle(fontSize: 30),
+              style: TextStyle(fontSize: 30, color: Colors.black),
               textAlign: TextAlign.center,
             ),
-            backgroundColor: Color(0xff1D2033),
+            backgroundColor: Colors.white,
             toolbarHeight: 60,
+<<<<<<< HEAD
             actions: <Widget>[
               PopupOptionMenu(),
               // IconButton(
@@ -32,10 +33,21 @@ class TabBarWidget extends StatelessWidget {
               //       Icons.more_vert_rounded,
               //       color: Colors.white,
               //     ))
+=======
+            elevation: 0.0,
+            actions: [
+              IconButton(
+                  onPressed: () {},
+                  icon: Icon(
+                    Icons.more_vert_rounded,
+                    color: Colors.black,
+                  ))
+>>>>>>> 85033a10ca07e16a80a77cd2bd0701b8f8aefbb1
             ],
             bottom: TabBar(
-              indicatorColor: Colors.white,
-              indicatorWeight: 5,
+              indicator: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50), // Creates border
+                  color: Colors.blue),
               tabs: tabs,
             ),
           ),

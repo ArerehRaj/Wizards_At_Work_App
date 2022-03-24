@@ -22,6 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
@@ -34,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
               Hero(
                 tag: 'logo',
                 child: Container(
-                  height: 300,
+                  height: 200,
                   child: Image.asset('images/Q-easy.png'),
                 ),
               ),
