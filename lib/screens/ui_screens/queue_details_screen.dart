@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_queue_management_system_app/scheme.dart';
 import 'package:smart_queue_management_system_app/components/queue_details_grid.dart';
+import 'package:learning_translate/learning_translate.dart';
 
 class QueueDetails extends StatefulWidget {
   const QueueDetails({Key? key}) : super(key: key);
@@ -10,8 +11,18 @@ class QueueDetails extends StatefulWidget {
 }
 
 class _QueueDetailsState extends State<QueueDetails> {
+
+  String name = 'M.K Gandhi Hospital';
+
+  void convertName() async {
+    Translator translator = Translator(from: ENGLISH, to: HINDI);
+    String translatedText = await translator.translate(name);
+    print(translatedText);
+  }
+
   @override
   Widget build(BuildContext context) {
+    convertName();
     return Scaffold(
       backgroundColor: bgcolor,
       body: Column(
