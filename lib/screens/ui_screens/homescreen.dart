@@ -7,7 +7,7 @@ import 'package:smart_queue_management_system_app/widgets/tabbar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
-
+  static const String id = 'homescreen';
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
