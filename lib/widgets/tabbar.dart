@@ -24,25 +24,16 @@ class TabBarWidget extends StatelessWidget {
             ),
             backgroundColor: Colors.white,
             toolbarHeight: 60,
-<<<<<<< HEAD
-            actions: <Widget>[
-              PopupOptionMenu(),
-              // IconButton(
-              //     onPressed: () {},
-              //     icon: Icon(
-              //       Icons.more_vert_rounded,
-              //       color: Colors.white,
-              //     ))
-=======
             elevation: 0.0,
             actions: [
               IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    PopupOptionMenu();
+                  },
                   icon: Icon(
                     Icons.more_vert_rounded,
                     color: Colors.black,
                   ))
->>>>>>> 85033a10ca07e16a80a77cd2bd0701b8f8aefbb1
             ],
             bottom: TabBar(
               indicator: BoxDecoration(

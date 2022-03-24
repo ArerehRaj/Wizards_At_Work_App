@@ -28,11 +28,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'QEasy',
-<<<<<<< HEAD
-      initialRoute: Positions.id,
-=======
       initialRoute: WelcomeScreen.id,
->>>>>>> 85033a10ca07e16a80a77cd2bd0701b8f8aefbb1
       routes: {
         WelcomeScreen.id: (context) => const WelcomeScreen(),
         LoginScreen.id: (context) => const LoginScreen(),
@@ -40,15 +36,11 @@ class MyApp extends StatelessWidget {
         DashboardScreen.id: (context) => const DashboardScreen(),
         NotificationScreen.id: (context) => const NotificationScreen(),
         QueueDetails.id: (context) => const QueueDetails(),
-<<<<<<< HEAD
-        HomeScreen.id: (context) => const HomeScreen(),
         Positions.id: (context) => const Positions(),
-=======
         HomeScreen.id: ((context) => const HomeScreen()),
         QueueJoined.id: ((context) => const QueueJoined(
             token_no: 57, current_token: 54, average_time: 10)),
         ActiveTicket.id: (context) => const ActiveTicket(),
->>>>>>> 85033a10ca07e16a80a77cd2bd0701b8f8aefbb1
       },
       // initialRoute: '/',
       // routes: {
