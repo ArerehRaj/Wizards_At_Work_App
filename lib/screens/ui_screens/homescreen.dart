@@ -6,6 +6,8 @@ import 'package:smart_queue_management_system_app/screens/ui_screens/doctor_scre
 import 'package:smart_queue_management_system_app/screens/ui_screens/shop_screen.dart';
 import 'package:smart_queue_management_system_app/widgets/tabbar.dart';
 
+import 'package:smart_queue_management_system_app/components/category_enum.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
   static const String id = 'homescreen';
@@ -26,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const TabBarWidget(
+    return TabBarWidget(
       tabs: [
         Tab(
           child: Text(
@@ -47,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         )
       ],
-      children: [ActiveTicket(), BusScreen(), ShopScreen()],
+      children: [DoctorScreen(categoryType: Category.doctor), BusScreen(categoryType: Category.busStop), ShopScreen(categoryType: Category.stores,)],
     );
   }
 }

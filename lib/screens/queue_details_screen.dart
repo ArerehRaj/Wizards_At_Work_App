@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:smart_queue_management_system_app/scheme.dart';
 import 'package:smart_queue_management_system_app/components/queue_details_grid.dart';
 
 class QueueDetails extends StatefulWidget {
   const QueueDetails({Key? key}) : super(key: key);
-  static const String id = 'queue_details_screen';
+  static const String routeName = 'queue_details_screen';
   @override
   _QueueDetailsState createState() => _QueueDetailsState();
 }
@@ -12,8 +11,9 @@ class QueueDetails extends StatefulWidget {
 class _QueueDetailsState extends State<QueueDetails> {
   @override
   Widget build(BuildContext context) {
+    final argsData = ModalRoute.of(context)!.settings.arguments as Map;
     return Scaffold(
-      backgroundColor: bgcolor,
+      backgroundColor: Color(0xff1d2033),
       body: Column(
         children: [
           Container(
@@ -22,13 +22,13 @@ class _QueueDetailsState extends State<QueueDetails> {
             padding:
                 const EdgeInsets.only(top: 60, left: 30, right: 30, bottom: 30),
             child: FittedBox(
-              child: Image.asset('images/hospital.jpg'),
+              child: Image.asset('assets/images/brand-image.png'),
               fit: BoxFit.fill,
             ),
           ),
           Expanded(
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
                   topRight: Radius.circular(20.0),
@@ -36,12 +36,15 @@ class _QueueDetailsState extends State<QueueDetails> {
                 ),
               ),
               child: QueueDetailsGrid(
-                nameOfHospital: 'M.K Gandhi Hospital',
-                nameOfDoctor: 'Dr. Chinmay',
-                noOfPeopleInFront: '18',
-                timeLeftInMins: '32',
-                noOfDistributedTokens: '11',
-                noOfTokensAvailable: '39',
+                nameOfHospital: argsData['org_name'].toString(),
+                nameOfDoctor: argsData['queueData'].get('queue_details')['name'].toString(),
+                noOfPeopleInFront: argsData['queueData'].get('arr_tokens').length.toString(),
+                timeLeftInMins: (argsData['queueData'].get('arr_tokens').length * argsData['queueData'].get('Avg_wait_time')).toString(),
+                noOfDistributedTokens: argsData['queueData'].get('token_distributed').toString(),
+                noOfTokensAvailable: (argsData['queueData'].get('max_tokens') - argsData['queueData'].get('token_distributed')).toString(),
+                queueData: argsData['queueData'],
+                queueID: argsData['queueID'],
+                categoryType: argsData['token_type'],
               ),
             ),
           ),

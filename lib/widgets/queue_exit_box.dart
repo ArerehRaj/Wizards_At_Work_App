@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class QueueExitBox extends StatefulWidget {
-  const QueueExitBox({Key? key}) : super(key: key);
+  const QueueExitBox({Key? key, required this.exitFunction, }) : super(key: key);
+
+  final exitFunction;
 
   @override
   State<QueueExitBox> createState() => _QueueExitBoxState();
@@ -10,11 +12,16 @@ class QueueExitBox extends StatefulWidget {
 class _QueueExitBoxState extends State<QueueExitBox> {
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
+    return  AlertDialog(
       title: Text("Are you sure you want to exit the queue?"),
       actions: [
-        ElevatedButton(onPressed: () {}, child: Text("Yes")),
-        ElevatedButton(onPressed: () {}, child: Text("NO"))
+        ElevatedButton(onPressed: () {
+          widget.exitFunction();
+          Navigator.of(context).pop();
+        }, child: Text("Yes")),
+        ElevatedButton(onPressed: () {
+          Navigator.of(context).pop();
+        }, child: Text("NO"))
       ],
     );
   }
