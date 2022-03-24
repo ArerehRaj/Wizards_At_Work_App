@@ -12,10 +12,7 @@ class OptionsScreen extends StatelessWidget {
     final deviceSize = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('Select Organization'),
-        ), 
+       
       body: Container(
       height: deviceSize.height,
       width: deviceSize.width,

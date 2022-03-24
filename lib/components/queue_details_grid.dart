@@ -281,7 +281,7 @@ class _QueueDetailsGridState extends State<QueueDetailsGrid> {
                 showDialog(
                       context: context,
                       builder: (context) {
-                        return QueueExitBox(exitFunction: exitFromQueue,);
+                        return QueueExitBox(exitFunction: exitFromQueue, isBooked:  _isBooked,);
                       });
                 // exitFromQueue();
               } : () {

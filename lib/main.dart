@@ -2,11 +2,19 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_queue_management_system_app/screens/queue_details_screen.dart';
-import 'package:smart_queue_management_system_app/screens/queues_screen.dart';
+import 'package:smart_queue_management_system_app/screens/ui_screens/homescreen.dart';
+import '../screens/queue_details_screen.dart';
+import '../screens/queues_screen.dart';
 
 import './screens/options_screen.dart';
 import './components/category_enum.dart';
+import 'package:smart_queue_management_system_app/screens/notification_screen.dart';
+
+import 'package:smart_queue_management_system_app/screens/auth_screens/login_screen.dart';
+import 'package:smart_queue_management_system_app/screens/auth_screens/registration_screen.dart';
+import '../screens/auth_screens/welcome_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:smart_queue_management_system_app/screens/auth_screens/dashboard_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -67,7 +75,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'QEasy',
+      initialRoute: 'welcome_screen',
       home: StreamBuilder(stream: FirebaseAuth.instance.authStateChanges(), builder: (ctx, usersnapshot){
         if (usersnapshot.connectionState == ConnectionState.waiting) {
             return const Center(
@@ -75,19 +85,26 @@ class MyApp extends StatelessWidget {
             );
           }
         
-        // if (usersnapshot.hasData) {
-        //     // return const UserProfileScreen();
-        //     // user is authenticated
-        //     // return const TabsScreen();
-        //   }
+        if (usersnapshot.hasData) {
+          return HomeScreen();
+            // return const UserProfileScreen();
+            // user is authenticated
+            // return const TabsScreen();
+          }
         // _populateOrg();
         //_populateQueue();
-        return OptionsScreen(categoryType: Category.doctor,);
+        return WelcomeScreen();
+        // return OptionsScreen(categoryType: Category.doctor,);
       },
       ),
     routes: {
-      QueuesScreen.routeName: (ctx) => const QueuesScreen(),
-      QueueDetails.routeName: (ctx) => const QueueDetails(),
+        'welcome_screen': (context) => const WelcomeScreen(),
+        LoginScreen.id: (context) => const LoginScreen(),
+        RegistrationScreen.id: (context) => const RegistrationScreen(),
+        DashboardScreen.id: (context) => const DashboardScreen(),
+        NotificationScreen.id: (context) => const NotificationScreen(),
+        QueuesScreen.routeName: (ctx) => const QueuesScreen(),
+        QueueDetails.routeName: (ctx) => const QueueDetails(),
     },
     );
   }
