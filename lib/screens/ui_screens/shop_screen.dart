@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../options_screen.dart';
+
 class ShopScreen extends StatefulWidget {
-  const ShopScreen({Key? key}) : super(key: key);
+  const ShopScreen({Key? key, required this.categoryType});
+  final categoryType;
 
   @override
   State<ShopScreen> createState() => _ShopScreenState();
@@ -10,8 +13,6 @@ class ShopScreen extends StatefulWidget {
 class _ShopScreenState extends State<ShopScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("This is shop screen."),
-    );
+    return OptionsScreen(categoryType: widget.categoryType);
   }
 }

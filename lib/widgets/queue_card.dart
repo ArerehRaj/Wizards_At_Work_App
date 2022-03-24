@@ -14,6 +14,7 @@ class QueueCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final deviceSize = MediaQuery.of(context).size;
+    print(queueID);
     return StreamBuilder(
       stream: FirebaseFirestore.instance.collection('queue').doc(queueID).snapshots(),
       builder: (context, snapshot) {
@@ -60,7 +61,7 @@ class QueueCard extends StatelessWidget {
 
         // querySnapshot.size = 1 ? Exit : Join 
 
-        
+        print(userDocument.data());
         return GestureDetector(
           onTap: userDocument.get('status') ? (){
             // one person one queue in one category
@@ -106,6 +107,7 @@ class QueueCard extends StatelessWidget {
             Navigator.pushNamed(context, QueueDetails.routeName, arguments: {'queueData': userDocument, 'queueID': queueID, 'token_type': orgType, 'org_name': orgName, 'org_type': orgType});
 
           } : (){print('HRHR');},
+          
           child: Card(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15.0),

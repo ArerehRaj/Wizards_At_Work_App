@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         )
       ],
-      children: [DoctorScreen(categoryType: Category.doctor), BusScreen(), ShopScreen()],
+      children: [DoctorScreen(categoryType: Category.doctor), BusScreen(categoryType: Category.busStop), ShopScreen(categoryType: Category.stores,)],
     );
   }
 }
