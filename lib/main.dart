@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:smart_queue_management_system_app/screens/active_ticket.dart';
 
 import 'package:smart_queue_management_system_app/screens/notification_screen.dart';
+import 'package:smart_queue_management_system_app/screens/queue_join_confirmation.dart';
 
 import 'package:smart_queue_management_system_app/screens/ui_screens/homescreen.dart';
 import 'package:smart_queue_management_system_app/screens/auth_screens/login_screen.dart';
@@ -33,6 +35,10 @@ class MyApp extends StatelessWidget {
         DashboardScreen.id: (context) => const DashboardScreen(),
         NotificationScreen.id: (context) => const NotificationScreen(),
         QueueDetails.id: (context) => const QueueDetails(),
+        HomeScreen.id: ((context) => const HomeScreen()),
+        QueueJoined.id: ((context) => const QueueJoined(
+            token_no: 57, current_token: 54, average_time: 10)),
+        ActiveTicket.id: (context) => const ActiveTicket(),
       },
       // initialRoute: '/',
       // routes: {

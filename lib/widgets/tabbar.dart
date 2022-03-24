@@ -18,22 +18,24 @@ class TabBarWidget extends StatelessWidget {
             centerTitle: true,
             title: Text(
               "QEasy",
-              style: TextStyle(fontSize: 30),
+              style: TextStyle(fontSize: 30, color: Colors.black),
               textAlign: TextAlign.center,
             ),
-            backgroundColor: Color(0xff1D2033),
+            backgroundColor: Colors.white,
             toolbarHeight: 60,
+            elevation: 0.0,
             actions: [
               IconButton(
                   onPressed: () {},
                   icon: Icon(
                     Icons.more_vert_rounded,
-                    color: Colors.white,
+                    color: Colors.black,
                   ))
             ],
             bottom: TabBar(
-              indicatorColor: Colors.white,
-              indicatorWeight: 5,
+              indicator: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50), // Creates border
+                  color: Colors.blue),
               tabs: tabs,
             ),
           ),

@@ -22,6 +22,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
@@ -34,7 +35,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               Hero(
                 tag: 'logo',
                 child: Container(
-                  height: 300.0,
+                  height: 200.0,
                   child: Image.asset('images/Q-easy.png'),
                 ),
               ),

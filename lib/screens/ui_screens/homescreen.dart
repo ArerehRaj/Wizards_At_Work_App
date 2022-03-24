@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:smart_queue_management_system_app/screens/active_ticket.dart';
 import 'package:smart_queue_management_system_app/screens/ui_screens/bus_screen.dart';
 import 'package:smart_queue_management_system_app/screens/ui_screens/doctor_screen.dart';
 import 'package:smart_queue_management_system_app/screens/ui_screens/shop_screen.dart';
@@ -30,23 +31,23 @@ class _HomeScreenState extends State<HomeScreen> {
         Tab(
           child: Text(
             "Doctor",
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(fontSize: 20, color: Colors.black),
           ),
         ),
         Tab(
           child: Text(
             "Bus",
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(fontSize: 20, color: Colors.black),
           ),
         ),
         Tab(
           child: Text(
             "Shop",
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(fontSize: 20, color: Colors.black),
           ),
         )
       ],
-      children: [DoctorScreen(), BusScreen(), ShopScreen()],
+      children: [ActiveTicket(), BusScreen(), ShopScreen()],
     );
   }
 }
